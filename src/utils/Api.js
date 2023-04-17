@@ -4,6 +4,10 @@ class Api {
     this._link = link;
     this._headers = headers;
   }
+//Универсальный метод запроса с проверкой ответа
+  _request(url, options) {
+    return fetch(url, options).then(this._handleResponse)
+  }
 
   //Обработка ответа сервера
   _handleResponse(res) {
@@ -16,17 +20,14 @@ class Api {
 
   //Получение информации о пользователе
   getUserData() {
-    return fetch(`${this._link}users/me`, {
+    return this._request(`${this._link}users/me`, {
       headers: this._headers
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   // Отправка информации о пользователе на сервер
   sendUserData(profileData) {
-    return fetch(`${this._link}users/me`, {
+    return this._request(`${this._link}users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -34,78 +35,55 @@ class Api {
         about: profileData.status
       })
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   //Получение карточек с сервера
   getInitialCards() {
-    return fetch(`${this._link}cards`, {
+    return this._request(`${this._link}cards`, {
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return this._handleResponse(res);
-        }
-      });
   }
 
   //Добавление новой карточки
   addNewCard({ name, link }) {
-    return fetch(`${this._link}cards`, {
+    return this._request(`${this._link}cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({ name, link })
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   // Удаление карточки с сервера
   deleteCard(cardId) {
-    return fetch(`${this._link}cards/${cardId}`, {
+    return this._request(`${this._link}cards/${cardId}`, {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   // Отправка лайка на сервер
   putCardLike(cardId) {
-    return fetch(`${this._link}cards/${cardId}/likes`, {
+    return this._request(`${this._link}cards/${cardId}/likes`, {
       headers: this._headers,
       method: 'PUT',
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   // Удаление лайка на сервере
   removeCardLike(cardId) {
-    return fetch(`${this._link}cards/${cardId}/likes`, {
+    return this._request(`${this._link}cards/${cardId}/likes`, {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 
   // Отправко информации об аватаре на сервер
   sendAvatarData(avatarLink) {
-    return fetch(`${this._link}users/me/avatar`, {
+    return this._request(`${this._link}users/me/avatar`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify({ avatar: avatarLink.avatarUrl})
+      body: JSON.stringify({ avatar: avatarLink.avatarUrl })
     })
-      .then(res => {
-        return this._handleResponse(res);
-      })
   }
 }
 
