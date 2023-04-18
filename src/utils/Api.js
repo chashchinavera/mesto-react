@@ -4,7 +4,7 @@ class Api {
     this._link = link;
     this._headers = headers;
   }
-//Универсальный метод запроса с проверкой ответа
+  //Универсальный метод запроса с проверкой ответа
   _request(url, options) {
     return fetch(url, options).then(this._handleResponse)
   }
