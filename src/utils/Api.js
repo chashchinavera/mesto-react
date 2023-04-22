@@ -32,7 +32,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: profileData.name,
-        about: profileData.status
+        about: profileData.about
       })
     })
   }
@@ -82,7 +82,7 @@ class Api {
     return this._request(`${this._link}users/me/avatar`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify({ avatar: avatarLink.avatarUrl })
+      body: JSON.stringify({ avatar: avatarLink.avatar })
     })
   }
 }
