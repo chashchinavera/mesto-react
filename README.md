@@ -19,7 +19,7 @@ Node
 
 ## Как посмотреть проект:
 ```
-$  git clone https://github.com/chashchinavera/mesto-react
+$  git clone https://github.com/chashchinavera/mesto-react.git
 ```
 ```
 $  cd mesto-react
