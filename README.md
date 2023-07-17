@@ -12,7 +12,7 @@
 4. Mesto (React): *этот репозиторий*
 5. [Mesto (JS)](https://github.com/chashchinavera/mesto)
 
-### ***Технологии***
+### **Технологии**
 ***
 * JavaScript (React, ES6, асинхронный код, валидация форм)
 * HTML5
@@ -24,7 +24,7 @@
 [Ссылка на репозиторий](https://github.com/chashchinavera/mesto-react)  
 [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-## Как посмотреть проект:
+### **Как посмотреть проект**
 ```
 $  git clone https://github.com/chashchinavera/mesto-react.git
 ```
